@@ -1,0 +1,6 @@
+[git]
+repo = ""
+
+[compose]
+file = "docker-compose.yaml"
+
