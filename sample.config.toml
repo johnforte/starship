@@ -1,6 +1,21 @@
+## This app only
+## You should be using a deploy key here hence no user or password property
 [git]
 repo = ""
+dir_to_clone = "~/"
 
 [compose]
 file = "docker-compose.yaml"
+force_repull = true
+
+[registery]
+private=false
+url=""
+username=""
+password=""
+
+## Should not touch this area it is for the script to coordinate
+[config]
+first_run = true
+compose_hash=""
 

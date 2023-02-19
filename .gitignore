@@ -1,2 +1,4 @@
 starship.iml
 .idea
+*.config.toml
+!sample.config.toml
