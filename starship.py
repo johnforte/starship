@@ -31,6 +31,11 @@ if not repo_path.joinpath('.git').is_dir():
 else:
     git.pull(_cwd=repo_path.absolute())
 
+
+docker = DockerClient(
+    compose_files=[repo_path.joinpath(config['compose']['file'])]
+)
+
 if config['registry']['private']:
     docker.login(
         config['registry']['url'],
@@ -44,9 +49,9 @@ if config['compose']['force_repull']:
     for key in compose['services']:
         docker.pull(compose['services'][key]['image'])
 
-docker = DockerClient(compose_files=[repo_path.joinpath(config['compose']['file'])])
-
 docker.compose.up(
+    remove_orphans=True,
+    detach=True,
     force_recreate=True,
     recreate=True,
 )
