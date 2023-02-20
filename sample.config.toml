@@ -14,8 +14,3 @@ url=""
 username=""
 password=""
 
-## Should not touch this area it is for the script to coordinate
-[config]
-first_run = true
-compose_hash=""
-
