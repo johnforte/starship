@@ -8,7 +8,7 @@ dir_to_clone = "~/"
 file = "docker-compose.yaml"
 force_repull = true
 
-[registery]
+[registry]
 private=false
 url=""
 username=""

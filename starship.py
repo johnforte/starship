@@ -13,12 +13,14 @@ def read_docker_compose(file):
     return doc
 
 
-config_file = ""
+def find_toml_config():
+    if os.path.isfile("starship.config.toml"):
+        return "starship.config.toml"
+    elif Path.home().joinpath('.starship.config.toml').is_file():
+        return Path.home().joinpath('.starship.config.tom')
 
-if os.path.isfile("starship.config.toml"):
-    config_file = "starship.config.toml"
-elif Path.home().joinpath('.starship.config.toml').is_file():
-    config_file = Path.home().joinpath('.starship.config.tom')
+
+config_file = find_toml_config()
 
 config = toml.load(config_file)
 
@@ -29,12 +31,11 @@ if not repo_path.joinpath('.git').is_dir():
 else:
     git.pull(_cwd=repo_path.absolute())
 
-
-if config['registery']['private']:
+if config['registry']['private']:
     docker.login(
-        config['registery']['url'],
-        config['registery']['username'],
-        config['registery']['password'],
+        config['registry']['url'],
+        config['registry']['username'],
+        config['registry']['password'],
     )
 
 compose = read_docker_compose(repo_path.joinpath(config['compose']['file']))
