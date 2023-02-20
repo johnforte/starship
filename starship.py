@@ -3,7 +3,7 @@ import yaml
 from pathlib import Path
 from sh import git
 from python_on_whales import docker, DockerClient
-import tomllib
+import toml
 import os.path
 
 
@@ -20,8 +20,7 @@ if os.path.isfile("starship.config.toml"):
 elif Path.home().joinpath('.starship.config.toml').is_file():
     configFile = Path.home().joinpath('.starship.config.tom')
 
-with open(configFile, "rb") as f:
-    config = tomllib.load(f)
+config = toml.load(configFile)
 
 repoPath = Path(config['git']['dir_to_clone'])
 
