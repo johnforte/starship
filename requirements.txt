@@ -1,4 +1,4 @@
-boto3==1.26.79
+boto3==1.26.88
 python-on-whales==0.59.0
 PyYAML==6.0
 python-crontab==2.7.1
